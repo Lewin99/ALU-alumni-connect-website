@@ -1,0 +1,16 @@
+{
+  "name": "alumini",
+  "version": "1.0.0",
+  "description": "website to connect university almini community",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "lewin99"
+  },
+  "author": "Lewin99",
+  "license": "ISC"
+}

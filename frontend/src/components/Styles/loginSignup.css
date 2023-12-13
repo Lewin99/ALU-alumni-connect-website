@@ -1,0 +1,74 @@
+.title {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+.title > h2 {
+  font-family: cursive;
+}
+
+.FormWrapper {
+  margin-top: 150px;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.formy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.LoginIcon {
+  width: 100%;
+  background-color: #800000;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+}
+
+.Form {
+  border: 1px solid;
+  border-color: #666;
+  width: 100%;
+  border-radius: 5px;
+  padding: 30px;
+  min-height: 445px;
+  height: auto;
+  box-sizing: border-box;
+}
+
+.form-group {
+  padding: 10px;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.form-group > label {
+  padding: 5px;
+  color: #666;
+  font-size: larger;
+}
+
+.form-control {
+  padding: 12px;
+  border-radius: 5px;
+  width: 100%;
+
+  @media (min-width: 769px) {
+    width: 100%;
+  }
+}
+
+#input {
+  background: none;
+  width: 100%;
+  max-width: 400px;
+}

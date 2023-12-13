@@ -1,0 +1,17 @@
+#footer {
+  margin-top: 150px;
+  width: 100%;
+  background-color: #800000;
+  padding: 50px;
+}
+
+.footerText {
+  padding: 10px;
+  font-size: 1.2rem;
+  font-family: cursive;
+}
+@media (max-width: 768px) {
+  .Text {
+    max-width: 100%;
+  }
+}

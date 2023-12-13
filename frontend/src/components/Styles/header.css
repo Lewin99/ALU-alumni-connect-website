@@ -1,0 +1,34 @@
+.HeaderBackColor {
+  background-color: #002e6d;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+}
+
+.nav-link {
+  font-family: cursive;
+  font-size: 1.1rem;
+  color: aliceblue;
+}
+#nav-link-logged {
+  display: flex;
+  justify-content: end;
+  align-items: end;
+}
+
+#brand-logo {
+  padding: 0;
+}
+
+.logo-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.navbar-toggler {
+  background-color: aliceblue !important;
+  margin-top: 15px;
+}

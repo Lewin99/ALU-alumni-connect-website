@@ -1,0 +1,53 @@
+.Home {
+  width: 100%;
+  min-height: 419px;
+}
+
+.event-card {
+  background-color: #f7f7f7;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #d4d4d4;
+  border-radius: 5px;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+}
+
+.card-title {
+  font-size: 22px;
+  font-weight: bold;
+  padding: 10px;
+}
+
+.card-text {
+  font-size: 16px;
+  padding: 10px;
+}
+
+.btn-primary {
+  background-color: #002e6d;
+  color: #ffffff;
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: #001f4f;
+}
+.card-body {
+  font-size: 1.2rem;
+  font-family: Arial, Helvetica, sans-serif;
+}
+#register-button {
+  background-color: #001f4f;
+  color: #d4d4d4;
+}
+.up-home {
+  display: flex;
+  align-items: flex-start;
+  padding-top: 60px;
+  padding-left: 10px;
+  padding-bottom: 10px;
+}
+
+.card-body-desc {
+  padding: 10px;
+}

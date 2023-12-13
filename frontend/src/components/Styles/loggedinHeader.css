@@ -1,0 +1,26 @@
+.HeaderBackColor {
+  background-color: #002e6d;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+}
+
+.nav-link {
+  font-family: cursive;
+  font-size: 1.1rem;
+  color: aliceblue;
+}
+#headerWrapper {
+  max-width: 90%;
+}
+
+.brand-logo {
+  max-width: 30%;
+}
+
+.brand-logo > img {
+  max-width: 100%;
+}
