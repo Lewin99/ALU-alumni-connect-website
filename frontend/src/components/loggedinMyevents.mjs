@@ -81,6 +81,28 @@ function LoggedInMyEvents() {
     }
   };
 
+  const handleDeletemyEvent = async (eventId) => {
+    try {
+      const response = await fetch(
+        `https://alumini-connect.onrender.com/api/events/${eventId}`,
+        {
+          method: "DELETE",
+        }
+      );
+
+      if (response.ok) {
+        setMyEvents((events) =>
+          events.filter((event) => event._id !== eventId)
+        );
+        alert("The clicked event has been deleted");
+      } else {
+        console.log("Deleting failed");
+      }
+    } catch (error) {
+      console.log("Error occurred", error);
+    }
+  };
+
   const handleEditEvent = (event) => {
     setEditingEvent(event);
   };
@@ -317,7 +339,7 @@ function LoggedInMyEvents() {
                       <button
                         type="button"
                         className="btn btn-danger"
-                        onClick={() => handleDeleteEvent(event._id)}
+                        onClick={() => handleDeletemyEvent(event._id)}
                       >
                         Delete
                       </button>
