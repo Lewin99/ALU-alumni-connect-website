@@ -8,7 +8,9 @@ function LoggedInMyEvents() {
   useEffect(() => {
     const fetchRegisteredEvents = async () => {
       try {
-        const response = await fetch("/api/registered");
+        const response = await fetch(
+          "https://alumini-connect.onrender.com/api/registered"
+        );
         if (response.ok) {
           const data = await response.json();
           setRegisteredEvents(data);
@@ -25,7 +27,9 @@ function LoggedInMyEvents() {
 
     const fetchMyEvents = async () => {
       try {
-        const response = await fetch("/api/events/byorganizer");
+        const response = await fetch(
+          "https://alumini-connect.onrender.com/api/events/byorganizer"
+        );
         if (response.ok) {
           const data = await response.json();
           setMyEvents(data);
@@ -43,9 +47,12 @@ function LoggedInMyEvents() {
 
   const handleDeleteEvent = async (eventId) => {
     try {
-      const response = await fetch(`/api/registered/${eventId}`, {
-        method: "DELETE",
-      });
+      const response = await fetch(
+        `https://alumini-connect.onrender.com/api/registered/${eventId}`,
+        {
+          method: "DELETE",
+        }
+      );
 
       if (response.ok) {
         setRegisteredEvents((events) =>
@@ -66,13 +73,16 @@ function LoggedInMyEvents() {
 
   const handleSaveEvent = async (event) => {
     try {
-      const response = await fetch(`/api/events/${event._id}`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(event),
-      });
+      const response = await fetch(
+        `https://alumini-connect.onrender.com/api/events/${event._id}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(event),
+        }
+      );
 
       if (response.ok) {
         const index = myEvents.findIndex((e) => e._id === event._id);

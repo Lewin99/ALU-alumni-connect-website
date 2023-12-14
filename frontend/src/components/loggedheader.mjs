@@ -10,12 +10,15 @@ function LoggedInHeader() {
 
   const logout = async () => {
     try {
-      const response = await fetch("/api/users/logout", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      const response = await fetch(
+        "https://alumini-connect.onrender.com/api/users/logout",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
 
       if (response.ok) {
         console.log("Logout successful");

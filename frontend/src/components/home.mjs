@@ -16,7 +16,9 @@ function Home() {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const response = await fetch("/api/events");
+        const response = await fetch(
+          "https://alumini-connect.onrender.com/api/events"
+        );
         if (response.ok) {
           const data = await response.json();
           console.log(data);

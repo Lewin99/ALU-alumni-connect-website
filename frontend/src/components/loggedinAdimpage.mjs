@@ -9,7 +9,9 @@ function LoggedInAdminPage() {
   useEffect(() => {
     const fetchRegisteredUsers = async () => {
       try {
-        const response = await fetch("/api/users");
+        const response = await fetch(
+          "https://alumini-connect.onrender.com/api/users"
+        );
         if (response.ok) {
           const data = await response.json();
           setRegisteredUsers(data);
@@ -26,7 +28,9 @@ function LoggedInAdminPage() {
 
     const fetchRegisteredEvents = async () => {
       try {
-        const response = await fetch("/api/events");
+        const response = await fetch(
+          "https://alumini-connect.onrender.com/api/events"
+        );
         if (response.ok) {
           const data = await response.json();
           setRegisteredEvents(data);
@@ -47,9 +51,12 @@ function LoggedInAdminPage() {
 
   const handleDeleteUser = async (userId) => {
     try {
-      const response = await fetch(`/api/users/${userId}`, {
-        method: "DELETE",
-      });
+      const response = await fetch(
+        `https://alumini-connect.onrender.com/api/users/${userId}`,
+        {
+          method: "DELETE",
+        }
+      );
 
       if (response.ok) {
         setRegisteredUsers((users) =>
@@ -66,9 +73,12 @@ function LoggedInAdminPage() {
 
   const handleDeleteEvent = async (eventId) => {
     try {
-      const response = await fetch(`/api/events/${eventId}`, {
-        method: "DELETE",
-      });
+      const response = await fetch(
+        `https://alumini-connect.onrender.com/api/events/${eventId}`,
+        {
+          method: "DELETE",
+        }
+      );
 
       if (response.ok) {
         setRegisteredEvents((events) =>
@@ -89,13 +99,16 @@ function LoggedInAdminPage() {
 
   const handleSaveUser = async (user) => {
     try {
-      const response = await fetch(`/api/users/${user._id}`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(user),
-      });
+      const response = await fetch(
+        `https://alumini-connect.onrender.com/api/users/${user._id}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(user),
+        }
+      );
 
       if (response.ok) {
         setRegisteredUsers((users) =>

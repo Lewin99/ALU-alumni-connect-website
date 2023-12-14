@@ -13,7 +13,9 @@ function LoggedInHome() {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const response = await fetch("/api/events");
+        const response = await fetch(
+          "https://alumini-connect.onrender.com/api/events"
+        );
         if (response.ok) {
           const data = await response.json();
           setEvents(data);
@@ -40,13 +42,16 @@ function LoggedInHome() {
         timeTo: event.timeTo,
       };
 
-      const response = await fetch("/api/registered", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(registrationData),
-      });
+      const response = await fetch(
+        "https://alumini-connect.onrender.com/api/registered",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(registrationData),
+        }
+      );
 
       if (response.ok) {
         alert("You have registered to attend this event");

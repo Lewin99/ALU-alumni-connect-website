@@ -24,13 +24,16 @@ function LoggedInAddEvents() {
     };
 
     try {
-      const response = await fetch("/api/events", {
-        method: "POST",
-        body: JSON.stringify(body),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      const response = await fetch(
+        "https://alumini-connect.onrender.com/api/events",
+        {
+          method: "POST",
+          body: JSON.stringify(body),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
 
       if (response.ok) {
         console.log("saved");
