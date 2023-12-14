@@ -60,10 +60,6 @@ function Login() {
           <div className="LoginIcon">
             <h1 className="text-light">Login</h1>
           </div>
-
-          <div className="loginfailed">
-            <h3></h3>
-          </div>
           <div className="FormElement">
             <form className="formy">
               <div className="form-group">

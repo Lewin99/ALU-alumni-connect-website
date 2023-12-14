@@ -65,11 +65,6 @@ function Signup() {
           <div className="LoginIcon">
             <h1 className="text-light">Sign Up</h1>
           </div>
-
-          <div className="signupFailed">
-            <h3></h3>
-          </div>
-
           <div className="FormElement mt-5">
             <form className="formy">
               <div className="form-group">
