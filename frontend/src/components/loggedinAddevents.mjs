@@ -49,7 +49,10 @@ function LoggedInAddEvents() {
         setFrom("");
         setTo("");
       } else {
-        console.log("failed");
+        if (response.status === 500) {
+          alert("the event with the same name had been registered ");
+          console.log("failed");
+        }
       }
     } catch (error) {
       console.error("An error occurred during the fetch:", error);

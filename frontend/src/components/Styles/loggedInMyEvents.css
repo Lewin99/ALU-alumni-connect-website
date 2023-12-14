@@ -83,3 +83,6 @@ textarea:focus {
   justify-content: center;
   align-items: center;
 }
+.card-body {
+  min-width: 90%;
+}
