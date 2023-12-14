@@ -101,14 +101,13 @@ function LoggedInHome() {
                     <strong>Category:</strong> {event.category}
                   </div>
                 </div>
-                <a
-                  href="#"
+                <button
                   className="btn"
                   id="register-button"
                   onClick={() => handleRegister(event)}
                 >
                   Register
-                </a>
+                </button>
               </div>
             </div>
           ))
