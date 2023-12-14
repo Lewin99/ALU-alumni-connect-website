@@ -26,6 +26,7 @@ const corsOptions = {
   origin: "https://alu-alumni-connect-website.vercel.app",
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
   optionsSuccessStatus: 204,
+  credentials: true,
 };
 
 const app = express();
@@ -33,6 +34,7 @@ const app = express();
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors(corsOptions));
+app.options("*", cors(corsOptions));
 
 app.use("/api/users", usersRoutes);
 app.use("/api/events", eventsRouter);
