@@ -118,7 +118,12 @@ export const login = async (req, res) => {
         Acess_Token_Secret_Key,
         { expiresIn: `${expiresIn}s` }
       );
-      res.cookie("token", Access_token, { httpOnly: true });
+      res.cookie("token", Access_token, {
+        httpOnly: true,
+        domain: "alu-alumni-connect-website.vercel.app",
+        secure: true,
+        sameSite: "None",
+      });
       res.status(200).json({
         message: "Login successful",
         Access_token,
