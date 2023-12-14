@@ -22,16 +22,10 @@ const conString = process.env.Db_connect;
   }
 })();
 
-const allowedOrigins = ["https://alu-alumni-connect-website.vercel.app/"];
-
 const corsOptions = {
-  origin: function (origin, callback) {
-    if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
-      callback(null, true);
-    } else {
-      callback(new Error("Not allowed by CORS"));
-    }
-  },
+  origin: "https://alu-alumni-connect-website.vercel.app",
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  optionsSuccessStatus: 204,
 };
 
 const app = express();
