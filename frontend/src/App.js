@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
-import Footer from "./components/footer.mjs";
 import Home from "./components/home.mjs";
 import Login from "./components/login.mjs";
 import Signup from "./components/signup.mjs";
@@ -46,7 +45,6 @@ function App() {
           </Route>
         )}
         <Route path="*" element={<Nomatch />} />
-        <Footer />
       </Routes>
     </div>
   );
