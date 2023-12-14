@@ -6,7 +6,7 @@ function LoggedInMyEvents() {
   const [registeredEvents, setRegisteredEvents] = useState([]);
   const [myEvents, setMyEvents] = useState([]);
   const [editingEvent, setEditingEvent] = useState(null);
-  const { auth } = useAuth;
+  const { auth } = useAuth();
   useEffect(() => {
     const fetchRegisteredEvents = async () => {
       try {
