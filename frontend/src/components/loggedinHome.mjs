@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./Styles/loggedInHome.css";
+import useAuth from "../hooks/useAuth.mjs";
 
 function formatDate(dateString) {
   const options = { year: "numeric", month: "long", day: "numeric" };
@@ -9,6 +10,7 @@ function formatDate(dateString) {
 
 function LoggedInHome() {
   const [events, setEvents] = useState([]);
+  const { auth } = useAuth();
 
   useEffect(() => {
     const fetchEvents = async () => {
@@ -48,6 +50,7 @@ function LoggedInHome() {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
+            Authorization: `Bearer ${auth.accessToken}`,
           },
           body: JSON.stringify(registrationData),
         }

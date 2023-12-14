@@ -11,7 +11,7 @@ export const registerForEvent = async (req, res) => {
     const { title, description, category, date, location, timeFrom, timeTo } =
       req.body;
 
-    const token = req.cookies.token;
+    const token = req.headers.authorization?.split(" ")[1];
     const decoded = jwt.verify(token, Secret_Key);
     const userId = decoded.userId;
 
@@ -54,7 +54,7 @@ export const registerForEvent = async (req, res) => {
 
 export const getRegisteredEventsForUser = async (req, res) => {
   try {
-    const token = req.cookies.token;
+    const token = req.headers.authorization?.split(" ")[1];
     const decoded = jwt.verify(token, Secret_Key);
     const userId = decoded.userId;
 

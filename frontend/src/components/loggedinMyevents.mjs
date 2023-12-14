@@ -1,15 +1,23 @@
 import React, { useState, useEffect } from "react";
 import "./Styles/loggedInMyEvents.css";
+import useAuth from "../hooks/useAuth.mjs";
 
 function LoggedInMyEvents() {
   const [registeredEvents, setRegisteredEvents] = useState([]);
   const [myEvents, setMyEvents] = useState([]);
   const [editingEvent, setEditingEvent] = useState(null);
+  const { auth } = useAuth;
   useEffect(() => {
     const fetchRegisteredEvents = async () => {
       try {
         const response = await fetch(
-          "https://alumini-connect.onrender.com/api/registered"
+          "https://alumini-connect.onrender.com/api/registered",
+          {
+            method: "GET",
+            headers: {
+              Authorization: `Bearer ${auth.accessToken}`,
+            },
+          }
         );
         if (response.ok) {
           const data = await response.json();
@@ -28,7 +36,13 @@ function LoggedInMyEvents() {
     const fetchMyEvents = async () => {
       try {
         const response = await fetch(
-          "https://alumini-connect.onrender.com/api/events/byorganizer"
+          "https://alumini-connect.onrender.com/api/events/byorganizer",
+          {
+            method: "GET",
+            headers: {
+              Authorization: `Bearer ${auth.accessToken}`,
+            },
+          }
         );
         if (response.ok) {
           const data = await response.json();
@@ -43,7 +57,7 @@ function LoggedInMyEvents() {
 
     fetchRegisteredEvents();
     fetchMyEvents();
-  }, []);
+  }, [auth.accessToken]);
 
   const handleDeleteEvent = async (eventId) => {
     try {

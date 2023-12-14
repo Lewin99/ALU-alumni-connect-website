@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./Styles/loggedInAddEvents.css";
+import useAuth from "../hooks/useAuth.mjs";
 
 function LoggedInAddEvents() {
   const [title, setTitle] = useState("");
@@ -9,6 +10,7 @@ function LoggedInAddEvents() {
   const [location, setLocation] = useState("");
   const [timeFrom, setFrom] = useState("");
   const [timeTo, setTo] = useState("");
+  const { auth } = useAuth();
 
   const handleSaveEvent = async (e) => {
     e.preventDefault();
@@ -31,6 +33,7 @@ function LoggedInAddEvents() {
           body: JSON.stringify(body),
           headers: {
             "Content-Type": "application/json",
+            Authorization: `Bearer ${auth.accessToken}`,
           },
         }
       );

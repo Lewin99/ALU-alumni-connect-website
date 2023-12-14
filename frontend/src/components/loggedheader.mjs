@@ -9,25 +9,6 @@ function LoggedInHeader() {
   const navigate = useNavigate();
 
   const logout = async () => {
-    try {
-      const response = await fetch(
-        "https://alumini-connect.onrender.com/api/users/logout",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
-
-      if (response.ok) {
-        console.log("Logout successful");
-      } else {
-        console.error("Logout failed");
-      }
-    } catch (error) {
-      console.error("Logout failed", error);
-    }
     window.localStorage.removeItem("auth");
     setAuth({});
     navigate("/");
