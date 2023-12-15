@@ -40,6 +40,7 @@ function Signup() {
       );
 
       if (response.ok) {
+        alert("Account successively created!");
         navigate("/login");
         setFirstName("");
         setLastName("");
