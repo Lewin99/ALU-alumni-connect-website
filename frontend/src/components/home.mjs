@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "./Styles/home.css";
 import { Link } from "react-router-dom";
 import Header from "./header.mjs";
@@ -10,8 +10,8 @@ function formatDate(dateString) {
   return date.toLocaleDateString(undefined, options);
 }
 
-function Home() {
-  const [events, setEvents] = useState([]);
+function Home({ events }) {
+  /* const [events, setEvents] = useState([]);
 
   useEffect(() => {
     const fetchEvents = async () => {
@@ -23,7 +23,6 @@ function Home() {
           const data = await response.json();
           console.log(data);
           setEvents(data);
-          console.log("Events data:", data.events);
         } else {
           console.error("Error fetching events:", response.statusText);
         }
@@ -34,7 +33,7 @@ function Home() {
 
     fetchEvents();
   }, []);
-
+*/
   return (
     <div>
       <div className="header bg-danger">
