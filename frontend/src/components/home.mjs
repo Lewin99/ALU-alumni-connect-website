@@ -14,7 +14,9 @@ function Home({ events }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    setLoading(false); // Set loading to false once events are loaded
+    if (events.length > 0) {
+      setLoading(false);
+    }
   }, [events]);
 
   return (
@@ -52,8 +54,8 @@ function Home({ events }) {
         <div className="container">
           <h2 className="p-5">Upcoming Events</h2>
 
-          {!loading &&
-            (Array.isArray(events) && events.length > 0 ? (
+          {!loading ? (
+            events.length > 0 ? (
               events.map((event) => (
                 <div className="card event-card" key={event._id}>
                   <div className="card-bodyHome1">
@@ -72,7 +74,8 @@ function Home({ events }) {
               ))
             ) : (
               <p className="text-dark">No upcoming events available.</p>
-            ))}
+            )
+          ) : null}
         </div>
       </div>
       <Footer />
