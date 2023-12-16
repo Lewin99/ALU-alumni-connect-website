@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./Styles/home.css";
 import { Link } from "react-router-dom";
 import Header from "./header.mjs";
@@ -11,29 +11,12 @@ function formatDate(dateString) {
 }
 
 function Home({ events }) {
-  /* const [events, setEvents] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchEvents = async () => {
-      try {
-        const response = await fetch(
-          "https://alumini-connect.onrender.com/api/events"
-        );
-        if (response.ok) {
-          const data = await response.json();
-          console.log(data);
-          setEvents(data);
-        } else {
-          console.error("Error fetching events:", response.statusText);
-        }
-      } catch (error) {
-        console.error("Error fetching events:", error);
-      }
-    };
+    setLoading(false); // Set loading to false once events are loaded
+  }, [events]);
 
-    fetchEvents();
-  }, []);
-*/
   return (
     <div>
       <div className="header bg-danger">
@@ -69,26 +52,27 @@ function Home({ events }) {
         <div className="container">
           <h2 className="p-5">Upcoming Events</h2>
 
-          {Array.isArray(events) && events.length > 0 ? (
-            events.map((event) => (
-              <div className="card event-card" key={event._id}>
-                <div className="card-bodyHome1">
-                  <h5 className="event-card-title">{event.title}</h5>
-                  <h6 className="event-card-subtitle">
-                    Event Date: {formatDate(event.date)}{" "}
-                  </h6>
-                  <h6 className="event-card-subtitle">
-                    Event Time: {event.timeFrom} - {event.timeTo}
-                  </h6>
-                  <Link to="/login" className="event-card-link">
-                    Read More
-                  </Link>
+          {!loading &&
+            (Array.isArray(events) && events.length > 0 ? (
+              events.map((event) => (
+                <div className="card event-card" key={event._id}>
+                  <div className="card-bodyHome1">
+                    <h5 className="event-card-title">{event.title}</h5>
+                    <h6 className="event-card-subtitle">
+                      Event Date: {formatDate(event.date)}{" "}
+                    </h6>
+                    <h6 className="event-card-subtitle">
+                      Event Time: {event.timeFrom} - {event.timeTo}
+                    </h6>
+                    <Link to="/login" className="event-card-link">
+                      Read More
+                    </Link>
+                  </div>
                 </div>
-              </div>
-            ))
-          ) : (
-            <p className="text-dark">No upcoming events available.</p>
-          )}
+              ))
+            ) : (
+              <p className="text-dark">No upcoming events available.</p>
+            ))}
         </div>
       </div>
       <Footer />
