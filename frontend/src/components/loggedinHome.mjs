@@ -10,6 +10,7 @@ function formatDate(dateString) {
 
 function LoggedInHome() {
   const [events, setEvents] = useState([]);
+  const [loading, setLoading] = useState(true);
   const { auth } = useAuth();
 
   useEffect(() => {
@@ -21,6 +22,7 @@ function LoggedInHome() {
         if (response.ok) {
           const data = await response.json();
           setEvents(data);
+          setLoading(false);
         } else {
           console.error("Error fetching events:", response.statusText);
         }
@@ -82,46 +84,48 @@ function LoggedInHome() {
       </div>
       <div className="container">
         <h3 className="addev-heading p-5">Upcoming Events</h3>
-        {Array.isArray(events) && events.length > 0 ? (
-          events.map((event, index) => (
-            <div className="card mb-3 event-card" key={index}>
-              <div className="card-body">
-                <h5 className="card-title">{event.title}</h5>
-                <div className="card-text">
-                  <div className="card-body-desc">
-                    <strong>Description:</strong> {event.description}
+        {!loading ? (
+          Array.isArray(events) && events.length > 0 ? (
+            events.map((event, index) => (
+              <div className="card mb-3 event-card" key={index}>
+                <div className="card-body">
+                  <h5 className="card-title">{event.title}</h5>
+                  <div className="card-text">
+                    <div className="card-body-desc">
+                      <strong>Description:</strong> {event.description}
+                      <br />
+                    </div>
+                    <div className="card-body-date">
+                      <strong>Date:</strong> {formatDate(event.date)}
+                    </div>
                     <br />
+                    <div className="card-body-time">
+                      <strong>Time:</strong>
+                      {event.timeFrom} - {event.timeTo}
+                    </div>
+                    <br />
+                    <div className="card-body-location">
+                      <strong>Location:</strong> {event.location}
+                    </div>
+                    <br />
+                    <div className="card-body-category">
+                      <strong>Category:</strong> {event.category}
+                    </div>
                   </div>
-                  <div className="card-body-date">
-                    <strong>Date:</strong> {formatDate(event.date)}
-                  </div>
-                  <br />
-                  <div className="card-body-time">
-                    <strong>Time:</strong>
-                    {event.timeFrom} - {event.timeTo}
-                  </div>
-                  <br />
-                  <div className="card-body-location">
-                    <strong>Location:</strong> {event.location}
-                  </div>
-                  <br />
-                  <div className="card-body-category">
-                    <strong>Category:</strong> {event.category}
-                  </div>
+                  <button
+                    className="btn"
+                    id="register-button"
+                    onClick={() => handleRegister(event)}
+                  >
+                    Register
+                  </button>
                 </div>
-                <button
-                  className="btn"
-                  id="register-button"
-                  onClick={() => handleRegister(event)}
-                >
-                  Register
-                </button>
               </div>
-            </div>
-          ))
-        ) : (
-          <p>No upcoming events available.</p>
-        )}
+            ))
+          ) : (
+            <p>No upcoming events available.</p>
+          )
+        ) : null}
       </div>
     </div>
   );
