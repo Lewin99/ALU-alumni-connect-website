@@ -5,6 +5,8 @@ function LoggedInAdminPage() {
   const [registeredUsers, setRegisteredUsers] = useState([]);
   const [registeredEvents, setRegisteredEvents] = useState([]);
   const [editingUser, setEditingUser] = useState(null);
+  const [loadingUsers, setLoadingUsers] = useState(true);
+  const [loadingEvents, setLoadingEvents] = useState(true);
 
   useEffect(() => {
     const fetchRegisteredUsers = async () => {
@@ -23,6 +25,8 @@ function LoggedInAdminPage() {
         }
       } catch (error) {
         console.error("Error fetching registered users:", error);
+      } finally {
+        setLoadingUsers(false);
       }
     };
 
@@ -42,6 +46,8 @@ function LoggedInAdminPage() {
         }
       } catch (error) {
         console.error("Error fetching registered events:", error);
+      } finally {
+        setLoadingEvents(false);
       }
     };
 
@@ -138,7 +144,7 @@ function LoggedInAdminPage() {
 
       <div className="wrapper container">
         <h3 className="addev-heading">Registered Users</h3>
-        {registeredUsers.length > 0 ? (
+        {loadingUsers ? null : registeredUsers.length > 0 ? (
           registeredUsers.map((user) => (
             <div className="card container" id="event-wrapper" key={user._id}>
               <div className="card-body d-md-flex">
@@ -280,7 +286,7 @@ function LoggedInAdminPage() {
 
       <div className="wrapper container">
         <h3 className="addev-heading">Registered Events</h3>
-        {registeredEvents.length > 0 ? (
+        {loadingEvents ? null : registeredEvents.length > 0 ? (
           registeredEvents.map((event) => (
             <div className="card container" id="event-wrapper" key={event._id}>
               <div className="card-body d-md-flex">
