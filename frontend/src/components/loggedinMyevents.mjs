@@ -163,202 +163,202 @@ function LoggedInMyEvents() {
       </div>
       <div className="wrapper container">
         <h3 className="addev-heading">Events Registered To Attend</h3>
-        {loadingRegisteredEvents
-          ? null
-          : registeredEvents.length > 0
-          ? registeredEvents.map((event, index) => (
-              <div className="card container" id="event-wrapper" key={index}>
-                <div className="card-body d-md-flex">
-                  <div className="card-text">
-                    <div>
-                      <strong>Event Title</strong>
-                    </div>
-                    <div>{event.title}</div>
+        {loadingRegisteredEvents ? null : registeredEvents.length > 0 ? (
+          registeredEvents.map((event, index) => (
+            <div className="card container" id="event-wrapper" key={index}>
+              <div className="card-body d-md-flex">
+                <div className="card-text">
+                  <div>
+                    <strong>Event Title</strong>
                   </div>
-                  <div className="card-text">
-                    <div>
-                      <strong>Event Description</strong>
-                    </div>
-                    <div>{event.description}</div>
+                  <div>{event.title}</div>
+                </div>
+                <div className="card-text">
+                  <div>
+                    <strong>Event Description</strong>
                   </div>
-                  <div className="card-text">
-                    <div>
-                      <strong>Date</strong>
-                    </div>
-                    <div>{formatDate(event.date)}</div>
+                  <div>{event.description}</div>
+                </div>
+                <div className="card-text">
+                  <div>
+                    <strong>Date</strong>
                   </div>
-                  <div className="card-text">
-                    <div>
-                      <strong>Time</strong>
-                    </div>
-                    <div>
-                      {event.timeFrom} - {event.timeTo}
-                    </div>
+                  <div>{formatDate(event.date)}</div>
+                </div>
+                <div className="card-text">
+                  <div>
+                    <strong>Time</strong>
                   </div>
-                  <div className="card-text">
-                    <div>
-                      <strong>Category</strong>
-                    </div>
-                    <div>{event.category}</div>
-                  </div>
-                  <div
-                    className="btn-group p-1 mb-3"
-                    id="buttdiv"
-                    role="group"
-                    aria-label="Event Actions"
-                  >
-                    <button
-                      type="button"
-                      className="btn btn-danger"
-                      id="butt"
-                      onClick={() => handleDeleteEvent(event._id)}
-                    >
-                      Cancel
-                    </button>
+                  <div>
+                    {event.timeFrom} - {event.timeTo}
                   </div>
                 </div>
+                <div className="card-text">
+                  <div>
+                    <strong>Category</strong>
+                  </div>
+                  <div>{event.category}</div>
+                </div>
+                <div
+                  className="btn-group p-1 mb-3"
+                  id="buttdiv"
+                  role="group"
+                  aria-label="Event Actions"
+                >
+                  <button
+                    type="button"
+                    className="btn btn-danger"
+                    id="butt"
+                    onClick={() => handleDeleteEvent(event._id)}
+                  >
+                    Cancel
+                  </button>
+                </div>
               </div>
-            ))
-          : null}
+            </div>
+          ))
+        ) : (
+          <p>No registered events available.</p>
+        )}
       </div>
       <div className="wrapper container">
         <h3 className="addev-heading">My Events</h3>
-        {loadingMyEvents
-          ? null
-          : myEvents.length > 0
-          ? myEvents.map((event, index) => (
-              <div className="card container" id="event-wrapper" key={index}>
-                <div className="card-body d-md-flex">
-                  {editingEvent && editingEvent._id === event._id ? (
-                    <form>
-                      <div className="card-text">
-                        <div>
-                          <strong>Event Title</strong>
-                        </div>
-                        <div>
-                          <input
-                            type="text"
-                            value={editingEvent.title}
-                            onChange={(e) =>
-                              setEditingEvent({
-                                ...editingEvent,
-                                title: e.target.value,
-                              })
-                            }
-                          />
-                        </div>
+        {loadingMyEvents ? null : myEvents.length > 0 ? (
+          myEvents.map((event, index) => (
+            <div className="card container" id="event-wrapper" key={index}>
+              <div className="card-body d-md-flex">
+                {editingEvent && editingEvent._id === event._id ? (
+                  <form>
+                    <div className="card-text">
+                      <div>
+                        <strong>Event Title</strong>
                       </div>
-                      <div className="card-text">
-                        <div>
-                          <strong>Event Description</strong>
-                        </div>
-                        <div>
-                          <textarea
-                            value={editingEvent.description}
-                            onChange={(e) =>
-                              setEditingEvent({
-                                ...editingEvent,
-                                description: e.target.value,
-                              })
-                            }
-                          />
-                        </div>
-                      </div>
-
-                      <div className="card-text">
-                        <div>
-                          <strong>Date</strong>
-                        </div>
-                        <div>{formatDate(editingEvent.date)}</div>
-                      </div>
-                      <div className="card-text">
-                        <div>
-                          <strong>Time</strong>
-                        </div>
-                        <div>
-                          {editingEvent.timeFrom} - {editingEvent.timeTo}
-                        </div>
-                      </div>
-                      <div className="card-text">
-                        <div>
-                          <strong>Category</strong>
-                        </div>
-                        <div>{editingEvent.category}</div>
-                      </div>
-                      <div
-                        className="btn-group p-1 mb-3"
-                        role="group"
-                        aria-label="Event Actions"
-                      >
-                        <button
-                          type="button"
-                          className="btn btn-primary"
-                          onClick={() => handleSaveEvent(editingEvent)}
-                        >
-                          Save
-                        </button>
-                      </div>
-                    </form>
-                  ) : (
-                    <div>
-                      <div className="card-text">
-                        <div>
-                          <strong>Event Title</strong>
-                        </div>
-                        <div>{event.title}</div>
-                      </div>
-                      <div className="card-text">
-                        <div>
-                          <strong>Event Description</strong>
-                        </div>
-                        <div>{event.description}</div>
-                      </div>
-                      <div className="card-text">
-                        <div>
-                          <strong>Date</strong>
-                        </div>
-                        <div>{formatDate(event.date)}</div>
-                      </div>
-                      <div className="card-text">
-                        <div>
-                          <strong>Time</strong>
-                        </div>
-                        <div>
-                          {event.timeFrom} - {event.timeTo}
-                        </div>
-                      </div>
-                      <div className="card-text">
-                        <div>
-                          <strong>Category</strong>
-                        </div>
-                        <div>{event.category}</div>
-                      </div>
-                      <div
-                        className="btn-group p-1 mb-3"
-                        role="group"
-                        aria-label="Event Actions"
-                      >
-                        <button
-                          type="button"
-                          className="btn btn-primary"
-                          onClick={() => handleEditEvent(event)}
-                        >
-                          Edit
-                        </button>
-                        <button
-                          type="button"
-                          className="btn btn-danger"
-                          onClick={() => handleDeletemyEvent(event._id)}
-                        >
-                          Delete
-                        </button>
+                      <div>
+                        <input
+                          type="text"
+                          value={editingEvent.title}
+                          onChange={(e) =>
+                            setEditingEvent({
+                              ...editingEvent,
+                              title: e.target.value,
+                            })
+                          }
+                        />
                       </div>
                     </div>
-                  )}
-                </div>
+                    <div className="card-text">
+                      <div>
+                        <strong>Event Description</strong>
+                      </div>
+                      <div>
+                        <textarea
+                          value={editingEvent.description}
+                          onChange={(e) =>
+                            setEditingEvent({
+                              ...editingEvent,
+                              description: e.target.value,
+                            })
+                          }
+                        />
+                      </div>
+                    </div>
+
+                    <div className="card-text">
+                      <div>
+                        <strong>Date</strong>
+                      </div>
+                      <div>{formatDate(editingEvent.date)}</div>
+                    </div>
+                    <div className="card-text">
+                      <div>
+                        <strong>Time</strong>
+                      </div>
+                      <div>
+                        {editingEvent.timeFrom} - {editingEvent.timeTo}
+                      </div>
+                    </div>
+                    <div className="card-text">
+                      <div>
+                        <strong>Category</strong>
+                      </div>
+                      <div>{editingEvent.category}</div>
+                    </div>
+                    <div
+                      className="btn-group p-1 mb-3"
+                      role="group"
+                      aria-label="Event Actions"
+                    >
+                      <button
+                        type="button"
+                        className="btn btn-primary"
+                        onClick={() => handleSaveEvent(editingEvent)}
+                      >
+                        Save
+                      </button>
+                    </div>
+                  </form>
+                ) : (
+                  <div>
+                    <div className="card-text">
+                      <div>
+                        <strong>Event Title</strong>
+                      </div>
+                      <div>{event.title}</div>
+                    </div>
+                    <div className="card-text">
+                      <div>
+                        <strong>Event Description</strong>
+                      </div>
+                      <div>{event.description}</div>
+                    </div>
+                    <div className="card-text">
+                      <div>
+                        <strong>Date</strong>
+                      </div>
+                      <div>{formatDate(event.date)}</div>
+                    </div>
+                    <div className="card-text">
+                      <div>
+                        <strong>Time</strong>
+                      </div>
+                      <div>
+                        {event.timeFrom} - {event.timeTo}
+                      </div>
+                    </div>
+                    <div className="card-text">
+                      <div>
+                        <strong>Category</strong>
+                      </div>
+                      <div>{event.category}</div>
+                    </div>
+                    <div
+                      className="btn-group p-1 mb-3"
+                      role="group"
+                      aria-label="Event Actions"
+                    >
+                      <button
+                        type="button"
+                        className="btn btn-primary"
+                        onClick={() => handleEditEvent(event)}
+                      >
+                        Edit
+                      </button>
+                      <button
+                        type="button"
+                        className="btn btn-danger"
+                        onClick={() => handleDeletemyEvent(event._id)}
+                      >
+                        Delete
+                      </button>
+                    </div>
+                  </div>
+                )}
               </div>
-            ))
-          : null}
+            </div>
+          ))
+        ) : (
+          <p>No events available in My Events.</p>
+        )}
       </div>
     </div>
   );
