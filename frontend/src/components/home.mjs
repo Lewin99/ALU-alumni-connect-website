@@ -14,6 +14,8 @@ function Home({ events }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    setLoading(true);
+
     if (events.length > 0) {
       setLoading(false);
     }
