@@ -54,28 +54,28 @@ function Home({ events }) {
         <div className="container">
           <h2 className="p-5">Upcoming Events</h2>
 
-          {!loading ? (
-            events.length > 0 ? (
-              events.map((event) => (
-                <div className="card event-card" key={event._id}>
-                  <div className="card-bodyHome1">
-                    <h5 className="event-card-title">{event.title}</h5>
-                    <h6 className="event-card-subtitle">
-                      Event Date: {formatDate(event.date)}{" "}
-                    </h6>
-                    <h6 className="event-card-subtitle">
-                      Event Time: {event.timeFrom} - {event.timeTo}
-                    </h6>
-                    <Link to="/login" className="event-card-link">
-                      Read More
-                    </Link>
-                  </div>
+          {loading ? (
+            <p>Loading events...</p>
+          ) : events.length > 0 ? (
+            events.map((event) => (
+              <div className="card event-card" key={event._id}>
+                <div className="card-bodyHome1">
+                  <h5 className="event-card-title">{event.title}</h5>
+                  <h6 className="event-card-subtitle">
+                    Event Date: {formatDate(event.date)}{" "}
+                  </h6>
+                  <h6 className="event-card-subtitle">
+                    Event Time: {event.timeFrom} - {event.timeTo}
+                  </h6>
+                  <Link to="/login" className="event-card-link">
+                    Read More
+                  </Link>
                 </div>
-              ))
-            ) : (
-              <p className="text-dark">No upcoming events available.</p>
-            )
-          ) : null}
+              </div>
+            ))
+          ) : (
+            <p className="text-dark">No upcoming events available.</p>
+          )}
         </div>
       </div>
       <Footer />
