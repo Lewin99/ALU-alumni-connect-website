@@ -16,8 +16,16 @@
   padding: 5px;
 }
 #event-wrapper {
-  width: fit-content;
+  display: flex;
+  flex-wrap: wrap; /* Wrap to the next line if there's not enough space */
 }
+
+.card {
+  flex: 0 0 calc(33.33% - 16px); /* Adjust the percentage as needed */
+  margin: 8px; /* Adjust the margin as needed */
+  box-sizing: border-box;
+}
+
 .wrapper {
   min-width: fit-content;
   display: flex;
