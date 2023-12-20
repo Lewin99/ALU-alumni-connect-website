@@ -17,12 +17,12 @@
 }
 #event-wrapper {
   display: flex;
-  flex-wrap: wrap; /* Wrap to the next line if there's not enough space */
+  flex-wrap: wrap;
 }
 
 .card {
-  flex: 0 0 calc(33.33% - 16px); /* Adjust the percentage as needed */
-  margin: 8px; /* Adjust the margin as needed */
+  flex: 0 0 calc(33.33% - 16px);
+  margin: 8px;
   box-sizing: border-box;
   justify-content: center;
   align-items: center;
