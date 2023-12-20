@@ -10,16 +10,28 @@ function formatDate(dateString) {
   return date.toLocaleDateString(undefined, options);
 }
 
-function Home({ events }) {
-  const [loading, setLoading] = useState(true);
+function Home() {
+  const [events, setEvents] = useState([]);
 
   useEffect(() => {
-    setLoading(true);
+    const fetchEvents = async () => {
+      try {
+        const response = await fetch("/api/events");
+        if (response.ok) {
+          const data = await response.json();
+          console.log(data);
+          setEvents(data);
+          console.log("Events data:", data.events);
+        } else {
+          console.error("Error fetching events:", response.statusText);
+        }
+      } catch (error) {
+        console.error("Error fetching events:", error);
+      }
+    };
 
-    if (events.length > 0) {
-      setLoading(false);
-    }
-  }, [events]);
+    fetchEvents();
+  }, []);
 
   return (
     <div>
@@ -35,7 +47,7 @@ function Home({ events }) {
             <h4>Welcome to our Alumni Network!</h4>
             <p className="p-4">
               <br />
-              We are thrilled to have you here as part of our ever-growing
+              we are thrilled to have you here as part of our ever-growing
               community of accomplished and dedicated individuals. Our alumni
               network is more than just a collection of names; it's a testament
               to the collective achievements and aspirations of our graduates.
@@ -56,9 +68,7 @@ function Home({ events }) {
         <div className="container">
           <h2 className="p-5">Upcoming Events</h2>
 
-          {loading ? (
-            <p className="p-4">Loading events...</p>
-          ) : events.length > 0 ? (
+          {Array.isArray(events) && events.length > 0 ? (
             events.map((event) => (
               <div className="card event-card" key={event._id}>
                 <div className="card-bodyHome1">

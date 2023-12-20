@@ -17,27 +17,6 @@ import useAuth from "./hooks/useAuth.mjs";
 function App() {
   const { setAuth } = useAuth();
   const [authReady, setAuthReady] = useState(false);
-  const [events, setEvents] = useState([]);
-
-  useEffect(() => {
-    const fetchEvents = async () => {
-      try {
-        const response = await fetch(
-          "https://alumini-connect.onrender.com/api/events"
-        );
-        if (response.ok) {
-          const data = await response.json();
-          setEvents(data);
-        } else {
-          console.error("Error fetching events:", response.statusText);
-        }
-      } catch (error) {
-        console.error("Error fetching events:", error);
-      }
-    };
-
-    fetchEvents();
-  }, []);
 
   useEffect(() => {
     const storedAuthData = JSON.parse(window.localStorage.getItem("auth"));
@@ -51,7 +30,7 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="/" element={<Home events={events} />} />
+        <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/about" element={<AboutUs />} />
