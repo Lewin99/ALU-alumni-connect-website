@@ -15,7 +15,7 @@ import RequireAuth from "./hooks/requireAuth.mjs";
 import useAuth from "./hooks/useAuth.mjs";
 
 function App() {
-  const { auth, setAuth } = useAuth();
+  const { setAuth } = useAuth();
   const [authReady, setAuthReady] = useState(false);
 
   useEffect(() => {
@@ -25,7 +25,7 @@ function App() {
       setAuth(storedAuthData);
     }
     setAuthReady(true);
-  }, []);
+  }, [setAuth]);
 
   return (
     <div className="App">
