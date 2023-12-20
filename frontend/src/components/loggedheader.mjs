@@ -40,7 +40,7 @@ function LoggedInHeader() {
               <div className="Links p-4 d-lg-flex p-1 d-sm-flex">
                 <ul className="navbar-nav">
                   <li className="nav-item" id="li">
-                    <Link to="/LoggedInHome" className="nav-link text-light">
+                    <Link to="/loggedinuser" className="nav-link text-light">
                       Home
                     </Link>
                   </li>

@@ -12,6 +12,7 @@ function formatDate(dateString) {
 
 function Home() {
   const [events, setEvents] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchEvents = async () => {
@@ -21,13 +22,14 @@ function Home() {
         );
         if (response.ok) {
           const data = await response.json();
-          console.log(data);
           setEvents(data);
         } else {
           console.error("Error fetching events:", response.statusText);
         }
       } catch (error) {
         console.error("Error fetching events:", error);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -69,7 +71,9 @@ function Home() {
         <div className="container">
           <h2 className="p-5">Upcoming Events</h2>
 
-          {Array.isArray(events) && events.length > 0 ? (
+          {loading ? (
+            <p className="p-4">Loading events...</p>
+          ) : Array.isArray(events) && events.length > 0 ? (
             events.map((event) => (
               <div className="card event-card" key={event._id}>
                 <div className="card-bodyHome1">
