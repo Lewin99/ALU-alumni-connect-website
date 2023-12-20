@@ -33,7 +33,7 @@ function Home({ events }) {
             <h4>Welcome to our Alumni Network!</h4>
             <p className="p-4">
               <br />
-              we are thrilled to have you here as part of our ever-growing
+              We are thrilled to have you here as part of our ever-growing
               community of accomplished and dedicated individuals. Our alumni
               network is more than just a collection of names; it's a testament
               to the collective achievements and aspirations of our graduates.
