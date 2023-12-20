@@ -55,7 +55,7 @@ function Home({ events }) {
           <h2 className="p-5">Upcoming Events</h2>
 
           {loading ? (
-            <p>Loading events...</p>
+            <p className="p-4">Loading events...</p>
           ) : events.length > 0 ? (
             events.map((event) => (
               <div className="card event-card" key={event._id}>
