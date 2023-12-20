@@ -35,12 +35,13 @@ export const createEvent = async (req, res) => {
 };
 
 export const listAllEvents = async (req, res) => {
-  try {
-    const events = await EventModel.find();
-    res.status(200).json(events);
-  } catch (error) {
-    res.status(500).json({ error: "Failed to fetch events" });
-  }
+  res.json("<h1>Hello</h1>");
+  // try {
+  //   const events = await EventModel.find();
+  //   res.status(200).json(events);
+  // } catch (error) {
+  //   res.status(500).json({ error: "Failed to fetch events" });
+  // }
 };
 
 export const listEventsByOrganizer = async (req, res) => {
