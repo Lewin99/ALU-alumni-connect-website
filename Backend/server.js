@@ -40,6 +40,10 @@ app.use("/api/users", usersRoutes);
 app.use("/api/events", eventsRouter);
 app.use("/api/registered", registeredRouter);
 
+app.get("/ping", (req, res) => {
+  res.status(200).send("Ping successful");
+});
+
 const port = process.env.PORT;
 
 app.listen(port, () => {
